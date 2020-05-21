@@ -251,9 +251,35 @@ console.log(newStudent.PRAssignment('Javascript'));
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
+class ProjectManager extends Instructor {
+  constructor(attrs) {
+    super(attrs);
 
+    this.gradClassName = attrs.gradClassName;
+    this.favInstructor = attrs.favInstructor;
+  }
+
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+
+  debugsCode(student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
+  }
 }
+
+const newProjectManager = new ProjectManager ({
+  name: 'Dumbo',
+  age: 14,
+  location: 'Russia',
+  specialty: 'communism',
+  favLanguage: 'English',
+  catchPhrase: 'Make it work.',
+  gradClassName: 'web32',
+  favInstructor: 'myself'
+});
+
+console.log(newProjectManager.debugsCode({name: 'Mark'}, 'Java'))
 
 /*
   STRETCH PROBLEM (no tests!)
